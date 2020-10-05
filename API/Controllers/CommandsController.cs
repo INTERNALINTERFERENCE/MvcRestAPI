@@ -13,7 +13,14 @@ namespace API.Controllers
     [ApiController]
     public class CommandsController : ControllerBase
     {
-        private readonly Repository _repository = new Repository();
+        private readonly ICommanderRepo _repository;
+
+        public CommandsController(ICommanderRepo repository)
+        {
+            _repository = repository;
+        }
+
+        //private readonly Repository _repository = new Repository();
 
         [HttpGet]
         public ActionResult<IEnumerable<Command>> GetAllCommands()
@@ -23,7 +30,7 @@ namespace API.Controllers
             return Ok(commandItems);
         }
 
-        //Get api/commands/5(example)
+        //get api/commands/{id}
         [HttpGet("{id}")]
         public ActionResult<Command> GetCommandById(int id)
         {
