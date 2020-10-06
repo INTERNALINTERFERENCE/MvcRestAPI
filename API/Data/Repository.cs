@@ -17,7 +17,7 @@ namespace API.Data
             };
         }
 
-        public IEnumerable<Command> GetCommands()
+        public IEnumerable<Command> GetAllCommands()
         {
             var commands = new List<Command>
             {
